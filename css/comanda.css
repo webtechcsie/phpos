@@ -1,0 +1,205 @@
+#categorii
+	{
+	width:100%;
+	height:150px;
+	overflow:hidden;
+	}
+#produse
+	{
+	width:100%;
+	height:100px;
+	overflow:hidden;
+	}	
+#head
+	{
+	display:block;
+	}
+
+#comandatotal
+	{
+	font-weight:bold;
+	font-size:18px;
+	text-align:right;
+	}		
+#continutcomanda
+	{
+	margin-top: 5px;
+	width:100%;
+	height:250px;
+	overflow:auto;
+	}
+.continutcomandaexpand
+	{
+	height:500px;
+	}
+#divloading
+	{
+	background-image:url(../files/img/loading.gif);
+	background-position:center;
+	background-repeat:no-repeat;
+	width: 200px;
+	height: 200px;
+	margin: 0px auto;
+	}
+
+#cautare
+	{
+	margin-top: 5px;
+	}
+
+#txtsearch
+	{
+	padding-left: 22px;
+	background-image:url(../files/img/edit-find-replace.png);
+	background-repeat:no-repeat;
+	}
+
+#moduriplata
+	{
+	height:50px;
+	}
+
+#footer
+	{
+	margin-top: 5px;
+	}
+	
+#btnFunctii
+	{
+	width: 200px;
+	height: 40px;
+	font-size:18px;
+	font-weight:bold;
+	color: #000000;
+	background-color: #009900;
+	}	
+	
+#btnIesireComanda
+	{
+	width: 200px;
+	height: 40px;
+	font-size:18px;
+	font-weight:bold;
+	color: #000000;
+	background-color: #FF0000;
+	}		
+
+#btnCautareAvansata
+	{
+	width: 200px;
+	height: 40px;
+	font-size:18px;
+	font-weight:bold;
+	color: #000000;
+	background-color: #FF6600
+	}
+#btnPlata
+	{
+	width:200px;
+	height: 40px;
+	font-size:18px;
+	font-weight:bold;
+	color:#FFFFFF;
+	background-color:#3366FF;
+	}				
+	
+/* functii */
+#btnGolesteComanda
+	{
+	width:150px;
+	height: 40px;
+	font-size:14px;
+	font-weight:bold;
+	color: #000000;
+	background-color: #FF0000;
+	background-position:left center;
+	background-repeat:no-repeat;
+	padding-left: 23px;
+	background-image:url(../files/img/user-trash.png);	
+	}
+#btnMarcajRapid
+	{
+	width:150px;
+	height: 40px;
+	font-size:14px;
+	font-weight:bold;
+	color: #000000;
+	background-color: #FF0000;
+	background-position:left center;
+	background-repeat:no-repeat;
+	padding-left: 23px;
+	background-image:url(../files/img/edit-find-replace.png);	
+	}
+
+#btnCatalogProduse
+	{
+	width:150px;
+	height: 40px;
+	font-size:14px;
+	font-weight:bold;
+	color: #000000;
+	background-color: #FF0000;
+	background-position:left center;
+	background-repeat:no-repeat;
+	padding-left: 23px;
+	background-image:url(../files/img/folder.png);	
+	}
+
+
+.btnModPlata
+	{
+	width:250px;
+	height: 50px;
+	font-size:18px;
+	font-weight:bold;
+	color: #000000;
+	background-color: #FF9900;
+	}
+.btnModPlataRapid
+	{
+	width:250px;
+	height: 50px;
+	font-size:18px;
+	font-weight:bold;
+	color: #000000;
+	background-color: #FF9900;
+	}	
+
+#btnSavePlata
+	{
+	width:150px;
+	height: 40px;
+	font-size:14px;
+	font-weight:bold;
+	color: #000000;
+	background-color: #FF3300;
+	background-position:left center;
+	background-repeat:no-repeat;
+	
+	background-image:url(../files/img/gtk-apply.png);	
+	}
+#btnResetPlata
+	{
+	width:150px;
+	height: 40px;
+	font-size:14px;
+	font-weight:bold;
+	color: #000000;
+	background-color: #009900;
+	background-position:left center;
+	background-repeat:no-repeat;
+	
+	background-image:url(../files/img/gtk-stop.png);	
+	}		
+	
+.rowodd
+	{
+	background-color:#CCCCCC;
+	height:35px;
+	}
+.roweven
+	{
+	background-color:#FFFFCC;
+	height:35px;
+	}
+/* functii */		

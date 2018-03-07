@@ -1,0 +1,253 @@
+body {
+}
+#layout
+{
+width:1020px; 
+height: 765px; 
+border:1px solid #000000; 
+margin:0px auto;
+}
+
+#main
+{
+width:1020px;
+height: 765px;
+margin:0px auto;
+}
+#overlay
+{
+position:absolute;
+opacity: 0.5;
+filter:alpha(opacity=50);
+background-color:#666666; width:100%;
+height: 765px;
+border:1px solid #000000;
+left:0px; top:0px;
+display:none;
+}
+/* sisable for jquery windows */
+#obiecte
+{
+position:absolute;
+width:1020px;
+height: 765px;
+border:1px solid #000000;
+top:0px;
+display:none;
+margin: 0px auto;
+}
+/* butoane */
+
+/* butoane */
+
+#divwindowhead
+	{
+	background-color:#0099FF;
+	border:1px solid #000000;
+	font-weight:bold;
+	width: 100%;
+	margin:0px auto;
+	}
+
+/* tastatura numerica */
+.tn_button
+	{
+	width: 60px;
+	height: 60px;
+	background-color:#FF9900; 
+	}
+#tn_value
+{	
+border:1px solid #000000;
+padding: 0px 0px 0px 0px; 
+margin:0px 0px 0px 0px;
+width:95%; 
+text-align:center;
+font-size:36px; 
+height:38px;
+} 
+#tn_table 
+{
+width:240px;
+}
+#tn_btnOk
+{
+width: 120px;
+height: 60px;
+background-color:#FFFF66;
+}	
+#tn_btnRenunta
+{
+width: 120px;
+height: 60px;
+background-color:#FF0000;
+}
+.tn_btnCalc
+	{
+	background-image:url(../files/img/calculator.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	width: 25px;
+	}
+
+/* keyboard */
+.kb_button_taste
+	{
+	width:50px;
+	height:50px;
+	background-color:#FFFFFF;
+	}
+.kb_key_num
+	{
+	width:50px;
+	height:50px;
+	background-color:#FF9900;
+	}	
+.kb_button_short
+	{
+	width:40px;
+	height:40px;
+	}	
+.kb_button_space
+	{
+	width: 248px; 
+	height:25px;
+	background-color:#FFFFFF;
+	}
+.kb_buttonTastatura
+	{
+	background-image:url(../files/img/keyboard.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	width: 50px;
+	}		
+
+.btn_search
+	{
+	background-image:url(../files/img/system-search.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	width: 50px;
+	}			
+#kb_btnOk
+{
+width: 120px;
+height: 60px;
+background-color:#FFFF66;
+}	
+#kb_btnRenunta
+{
+width: 120px;
+height: 60px;
+background-color:#FF0000;
+}
+
+#cal_btnCalendar
+{
+	width: 30px;
+	height: 20px;
+	background-image:url(../files/img/office-calendar.png);
+	background-position:center;
+	background-repeat:no-repeat;
+}
+	
+.dialog_exit
+	{
+	height: 40px;
+	width:90%;
+	}
+
+.btn_select
+	{
+	border: 2px solid #00000;
+	}
+.btn_catalog
+	{
+	width:200px; height:30px; border: 2px solid #FAFAFA;
+	}			
+	
+.rowhead
+	{
+	background-color:#999999;
+	font-weight:bold;
+	}
+
+.rowodd
+	{
+	background-color:#CCCCCC;
+	}
+.roweven
+	{
+	background-color:#FFFFCC;
+	}
+.rowhover
+	{
+	background-color:#00FFFF;
+	}
+.rowred
+	{
+	background-color:#FF0000;
+	}
+	
+.rowclick
+	{
+	background-color:#66FF99;
+	}	
+	
+img
+	{
+	border: 0px;
+	}
+
+.text18
+	{
+	font-size:18px;
+	font-weight:bold;
+	}
+.text18right
+	{
+	font-size:18px;
+	font-weight:bold;
+	text-align:right;
+	}
+.btnTouch
+	{
+	width: 150px;
+	height:45px;
+	}
+
+form {
+margin:0px 0px 0px 0px;
+padding: 0px 0px 0px 0px;
+}
+
+
+#loading {
+
+    padding: 20px;
+    border: 0px solid green;
+    display: none; /* hidden */
+    position: absolute;    
+    left: 50%;
+	z-index:500;
+    margin-left: -100px;
+    top: 25%;
+    width: 200px;
+    /*height: 100px;*/
+        /*margin-top: -50;*/
+    font-weight: bold;
+    font-size: large;
+    }		
+/* tastatura numerica */	
+/*
+#tn_div
+{
+position:absolute;
+width:240px;
+height: 350px;
+border:1px solid #000000;
+top:25%;
+left: 25%;
+z-index:0;
+margin: 0px auto;
+}*/
