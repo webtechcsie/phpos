@@ -1,6 +1,9 @@
-runtime: php55
+runtime: php
+env: flex
 api_version: 1
-threadsafe: true
+
+runtime_config:
+  document_root: .
 
 handlers:
 # Serve images as static resources.
