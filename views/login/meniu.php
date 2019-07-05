@@ -28,6 +28,17 @@
       <input name="btnLogOut" type="button" id="btnLogOut" class="btnTouch" value="Log Out" onClick="window.location.href = 'logout.php'" >
     </div></td>
   </tr>
+<tr>
+    <td><div align="center">
+           </div></td>
+    <td><div align="center">
+       </div></td>
+    <td><div align="center">
+    </div></td>
+    <td><div align="center">
+      <input name="btnLogOut" type="button" id="btnLogOut" class="btnTouch" value="IESIRE" onClick="window.location.href = 'exit.php'" >
+    </div></td>
+  </tr>
 
 </table>
 </div>
