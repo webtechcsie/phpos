@@ -1,3 +1,1 @@
-# phpos
-
-To be detailed
+# Point Of Sale dezvoltat în PHP
