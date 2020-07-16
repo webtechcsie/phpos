@@ -169,6 +169,146 @@ class FiscalDatecs extends Fiscal
 		
 }
 
+class FiscalNet extends Fiscal
+{
+	var $Linie = "S^<%denumire%>^<%pret%>^<%cant%>^<%um%>^<%tva%>^<%sectie%>\r\n";
+	var $Discount = "DP^<%procent%>\r\n";
+	var $End = "P^<%cod%>^<%total%>\r\n";
+	
+	
+	
+	 function FiscalNet($mysql)
+		{
+		$this -> mysql = $mysql;
+		}
+	
+	 function genereazaBon()
+		{
+		global $cfgFiscal;
+		$Bon = new Bonuri($this -> mysql, $this -> bon_id);
+		$Casa = new CaseFiscale($this -> mysql, $Bon -> obj -> casa_id);
+		$BonContinut = new BonuriContinut($this -> mysql);
+		$BonContinut -> findAllBy("bon_id", $this -> bon_id);
+		$txt = "";
+		if($Bon -> obj -> avans == 'NU')
+		{
+		if(isset($BonContinut -> objects))
+			{
+			$Produs = new Produse($this -> mysql);
+			foreach($BonContinut -> objects as $objContinut)
+				{
+				$Produs -> get($objContinut -> produs_id);
+				$linie = $this -> Linie;
+				$this -> replace($linie, '<%denumire%>', strtoupper(substr($Produs -> obj -> denumire, 0, 20)));
+				$this -> replace($linie, '<%pret%>', number_format($objContinut -> valoare, 2, '', ''));
+				$this -> replace($linie, '<%cant%>', number_format($objContinut -> cantitate, 3, '', ''));
+				$this -> replace($linie, '<%um%>', 'buc');
+				$this -> replace($linie, '<%tva%>', '1');
+				$this -> replace($linie, '<%sectie%>', '1');
+				$this -> append($txt, $linie);
+					if($objContinut -> discount > 0) {
+						$discount = $this -> Discount;
+						$this -> replace($discount, '<%procent%>', number_format($objContinut -> discount,2,'',''));
+						$this -> append($txt, $discount);
+					}
+				}
+			}
+		
+		$BonPlata = new BonuriPlata($this -> mysql);
+		$BonPlata -> findAllBy("bon_id", $this -> bon_id);
+		$bon_fiscal = TRUE;
+		if(isset($BonPlata -> objects))
+			{
+			$nr_r  = count($BonPlata -> objects);
+			if($nr_r > 1) {
+			
+			foreach($BonPlata -> objects as $objPlata)
+				{
+				$linie = $this -> End;
+				$ModPlata = new ModuriPlata($this -> mysql, $objPlata -> mod_plata_id);
+				if($ModPlata -> obj -> fiscal == 'NU') $bon_fiscal = FALSE;
+				$this -> replace($linie, '<%cod%>', $ModPlata -> obj -> final_fiscal);
+				$this -> replace($linie, '<%total%>', number_format($objPlata -> suma, 2, '', ''));
+				$this -> append($txt, $linie);
+				}
+			}
+			else {
+				$objPlata = $BonPlata -> objects[0];
+				$linie = $this -> End;
+				$ModPlata = new ModuriPlata($this -> mysql, $objPlata -> mod_plata_id);
+				if($ModPlata -> obj -> fiscal == 'NU') $bon_fiscal = FALSE;
+				$this -> replace($linie, '<%cod%>', $ModPlata -> obj -> final_fiscal);
+				if($ModPlata -> obj -> final_fiscal == '0') $this -> replace($linie, '<%total%>', '');
+				else $this -> replace($linie, '<%total%>', number_format($objPlata -> suma, 2, '', ''));
+				$this -> append($txt, $linie);
+			}
+			}
+		
+		$this -> BonFile = $this -> bon_id.".txt";
+		
+		$this -> BonText = $txt;
+		if($bon_fiscal) {$this -> scrieFisier();}
+		}
+		else 
+		{
+		if($Bon -> obj -> achitat == 'NU')
+			{
+			$procent = $Bon -> obj -> suma_avans/100;
+			$fisier = "-AV";
+			$prod = "AV ";
+			}
+			else
+			{
+			$procent = (100 - $Bon -> obj -> suma_avans)/100;
+			$fisier = "-TOT";
+			$prod = "TOT ";
+			}
+		//emitere bon fiscal cu avans	
+		if(isset($BonContinut -> objects))
+			{
+			foreach($BonContinut -> objects as $objContinut)
+				{
+				$Produs = new Produse($this -> mysql, $objContinut -> produs_id);
+				$linie = $this -> Linie;
+				$this -> replace($linie, '<%id%>', $Casa -> obj -> id);
+				$this -> replace($linie, '<%denumire%>', strtoupper(substr($prod.$Produs -> obj -> denumire, 0, 20)));
+				$this -> replace($linie, '<%pret%>', number_format($objContinut -> valoare*$procent, 2, '.', ''));
+				$this -> replace($linie, '<%cant%>', number_format($objContinut -> cantitate, 3, '.', ''));
+				$this -> replace($linie, '<%sectie%>', '1');
+				$this -> append($txt, $linie);
+				}
+			}
+		
+		$BonPlata = new BonuriPlata($this -> mysql);
+		$BonPlata -> findAllBy("bon_id", $this -> bon_id);
+		$bon_fiscal = TRUE;
+		if(isset($BonPlata -> objects))
+			{
+			foreach($BonPlata -> objects as $objPlata)
+				{
+				$linie = $this -> End;
+				$ModPlata = new ModuriPlata($this -> mysql, $objPlata -> mod_plata_id);
+				if($ModPlata -> obj -> fiscal == 'NU') $bon_fiscal = FALSE;
+				$this -> replace($linie, '<%id%>', $Casa -> obj -> id);
+				$this -> replace($linie, '<%cod%>', $ModPlata -> obj -> final_fiscal);
+				$this -> replace($linie, '<%total%>', number_format($objPlata -> suma*$procent, 2, '.', ''));
+				$this -> append($txt, $linie);
+				}
+			}
+		
+		$this -> BonFile = $this -> bon_id."". $fisier .".INP";
+		
+		$this -> BonText = $txt;
+		if($bon_fiscal) $this -> scrieFisier();
+		}
+		}	
+		
+		function executBon()
+			{
+			}
+		
+}
+
 class FiscalZeka extends Fiscal
 {
 	var $Linie = "";
